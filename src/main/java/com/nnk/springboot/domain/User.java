@@ -12,19 +12,25 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    @NotBlank(message = "Username is mandatory")
+
+    @NotBlank
     private String username;
-    @NotBlank(message = "Password is mandatory")
-    private String password;
-    @Email
-    @NotBlank(message = "FullName is mandatory")
+
+    @NotBlank
     private String email;
-    @NotBlank(message = "Role is mandatory")
+
+    @NotBlank
+    private String password;
+
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+    public User() {
+    }
 
     public User(String username, String password, String email) {
         this.username = username;
