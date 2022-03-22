@@ -7,27 +7,25 @@ import javax.persistence.*;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String name;
-
+    private Integer id;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private ERole name;
     public Role() {
     }
-
-    public Role(String name) {
-        super();
+    public Role(ERole name) {
         this.name = name;
     }
-
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
-    public String getName() {
+    public ERole getName() {
         return name;
     }
-    public void setName(String name) {
+    public void setName(ERole name) {
         this.name = name;
     }
 }

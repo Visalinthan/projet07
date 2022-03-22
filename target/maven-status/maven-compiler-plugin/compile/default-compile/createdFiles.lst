@@ -1,0 +1,5 @@
+com\nnk\springboot\controllers\UserRegistrationController.class
+com\nnk\springboot\security\service\UserServiceImpl.class
+com\nnk\springboot\controllers\MainController.class
+com\nnk\springboot\security\service\UserService.class
+com\nnk\springboot\dto\UserRegistrationDto.class
