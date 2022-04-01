@@ -8,6 +8,10 @@ import java.util.Set;
 public class SignupRequest {
     @NotBlank
     @Size(min = 3, max = 20)
+    private String fullname;
+
+    @NotBlank
+    @Size(min = 3, max = 20)
     private String username;
 
     @NotBlank
@@ -20,6 +24,14 @@ public class SignupRequest {
     @NotBlank
     @Size(min = 6, max = 40)
     private String password;
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
 
     public String getUsername() {
         return username;

@@ -1,11 +1,12 @@
 package com.nnk.springboot.security.service;
 
-import com.nnk.springboot.domain.User;
-import com.nnk.springboot.dto.UserRegistrationDto;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+/**
+ * L'interface a une méthode pour charger l'utilisateur par nom d' utilisateur et renvoie un UserDetails objet que Spring Security
+ * peut utiliser pour l'authentification et la validation.
+ */
 public interface UserDetailsService {
-    //Méthode pour charger l'utilisateur par son nom et renvoie un UserDetails qui contient les informations nécessaire pour un user
     UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
 }

@@ -1,7 +1,6 @@
 package com.nnk.springboot.security.service;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nnk.springboot.domain.User;
-import com.nnk.springboot.dto.UserRegistrationDto;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +10,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+/**
+ * UserDetails contient les informations nécessaires (telles que : nom d'utilisateur, mot de passe, autorités) pour construire un objet d'authentification.
+ */
 public class UserDetailsImpl implements UserDetails {
     private static final long serialVersionUID = 1L;
     private Long id;

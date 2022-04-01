@@ -1,7 +1,6 @@
 package com.nnk.springboot.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,6 +11,9 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
+
+    @NotBlank
+    private String fullname;
 
     @NotBlank
     private String username;
@@ -32,10 +34,19 @@ public class User {
     public User() {
     }
 
-    public User(String username, String password, String email) {
+    public User(String fullname, String username, String password, String email) {
+        this.fullname = fullname;
         this.username = username;
         this.password = password;
         this.email = email;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 
     public Long getId() {
