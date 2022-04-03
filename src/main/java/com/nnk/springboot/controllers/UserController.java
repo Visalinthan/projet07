@@ -4,7 +4,6 @@ import com.nnk.springboot.domain.Role;
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.payload.request.SignupRequest;
 import com.nnk.springboot.payload.response.MessageResponse;
-import com.nnk.springboot.repositories.UserRepository;
 import com.nnk.springboot.security.service.RoleService;
 import com.nnk.springboot.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
