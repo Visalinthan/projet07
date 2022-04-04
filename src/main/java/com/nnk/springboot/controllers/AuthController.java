@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,15 +26,21 @@ public class AuthController {
     @Autowired
     JwtUtils jwtUtils;
 
-
     @GetMapping("/login")
     public String login() {
         return "login";
     }
 
-    @GetMapping("/")
-    public String home() {
-        return "home";
+    @GetMapping("/admin")
+    @RolesAllowed("ADMIN")
+    public String getAdmin() {
+        return "user/list";
+    }
+
+    @GetMapping("/*")
+    @RolesAllowed("User")
+    public String getUser() {
+        return "bidList/list";
     }
 
     @PostMapping("/signin")
