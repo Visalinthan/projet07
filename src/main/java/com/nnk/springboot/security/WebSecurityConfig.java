@@ -29,6 +29,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     UserDetailsServiceImpl userDetailsService;
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
+
+    @Autowired
+    private UserAuthentificationSuccessHandler successHandler;
     @Bean
     public AuthTokenFilter authenticationJwtTokenFilter() {
         return new AuthTokenFilter();
@@ -59,18 +62,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 
                 .authorizeRequests()
-                .antMatchers("/admin/home").hasRole("ADMIN")
-                .antMatchers("/home").hasRole("USER")
+                .antMatchers("/user/**").hasRole("ROLE_ADMIN")
+                .antMatchers("/bidList/list").hasRole("ROLE_USER")
                 .antMatchers(
-                        "user/**",
                         "/registration**",
                         "/js/**",
                         "static/css/**",
                         "/img/**",
                         "/api/test/**").permitAll()
                 /*.anyRequest().authenticated()*/.and()
-                .formLogin().loginPage("/login").permitAll().and()
-                .logout()
+                .formLogin().successHandler(successHandler)
+                .loginPage("/login").permitAll().and().logout().permitAll()
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
