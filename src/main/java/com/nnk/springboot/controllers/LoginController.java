@@ -35,19 +35,19 @@ public class LoginController {
     @Autowired
     JwtUtils jwtUtils;
 
-    @GetMapping("/")
+    @GetMapping("/login")
     public ModelAndView login() {
         return new ModelAndView("login");
     }
 
     @GetMapping("/admin")
-    @RolesAllowed("ROLE_ADMIN")
+    @RolesAllowed("ADMIN")
     public ModelAndView getAdmin() {
         return new ModelAndView("user/list");
     }
 
     @GetMapping("/user")
-    @RolesAllowed("ROLE_USER")
+    @RolesAllowed("USER")
     public ModelAndView getUser() {
         return new ModelAndView("bidList/list");
     }

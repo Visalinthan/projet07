@@ -24,7 +24,7 @@ public class BidListController {
     }
 
     @RequestMapping("/bidList/list")
-    public String home(Model model)
+    public String homeBid(Model model)
     {
         List<BidList> bidLists = bidListService.list();
         model.addAttribute("bidLists", bidLists);
@@ -38,7 +38,7 @@ public class BidListController {
     }
 
     @PostMapping("/bidList/validate")
-    public String validate(@Valid BidList bid, BindingResult result, Model model) {
+    public String validateBid(@Valid BidList bid, BindingResult result, Model model) {
 
         if (!result.hasErrors()) {
             bidListService.save(bid);
@@ -49,21 +49,29 @@ public class BidListController {
     }
 
     @GetMapping("/bidList/update/{id}")
-    public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        // TODO: get Bid by Id and to model then show to the form
+    public String showUpdateBidForm(@PathVariable("id") Integer id, Model model) {
+        BidList bidList = bidListService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid bidList Id:" + id));
+        model.addAttribute("bidList", bidList);
         return "bidList/update";
     }
 
     @PostMapping("/bidList/update/{id}")
     public String updateBid(@PathVariable("id") Integer id, @Valid BidList bidList,
                              BindingResult result, Model model) {
-        // TODO: check required fields, if valid call service to update Bid and return list Bid
+        if (result.hasErrors()) {
+            return "bidList/update";
+        }
+        bidList.setId(id);
+        bidListService.save(bidList);
+        model.addAttribute("bidLists", bidListService.list());
         return "redirect:/bidList/list";
     }
 
     @GetMapping("/bidList/delete/{id}")
     public String deleteBid(@PathVariable("id") Integer id, Model model) {
-        // TODO: Find Bid by Id and delete the bid, return to Bid list
+        BidList bidList = bidListService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid bidList Id:" + id));
+        bidListService.deleteById(bidList.getId());
+        model.addAttribute("bidLists", bidListService.list());
         return "redirect:/bidList/list";
     }
 }

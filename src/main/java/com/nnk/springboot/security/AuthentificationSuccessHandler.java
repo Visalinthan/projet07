@@ -1,5 +1,6 @@
 package com.nnk.springboot.security;
 
+import com.nnk.springboot.domain.ERole;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -20,18 +21,12 @@ class UserAuthentificationSuccessHandler implements AuthenticationSuccessHandler
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
-        boolean hasUserRole = false;
-        boolean hasAdminRole = false;
+
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        for (GrantedAuthority grantedAuthority : authorities) {
-            if (grantedAuthority.getAuthority().equals("ROLE_USER")) {
-                hasUserRole = true;
-                break;
-            } else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
-                hasAdminRole = true;
-                break;
-            }
-        }
+
+
+        boolean hasUserRole = authorities.stream().filter(r->r.getAuthority().equals(ERole.ROLE_USER.name())).count()>0;
+        boolean hasAdminRole = authorities.stream().filter(r->r.getAuthority().equals(ERole.ROLE_ADMIN.name())).count()>0;
 
         if (hasUserRole) {
             redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "bidList/list");

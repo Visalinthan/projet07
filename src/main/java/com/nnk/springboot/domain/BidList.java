@@ -7,6 +7,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "bidlist")
@@ -21,16 +22,16 @@ public class BidList {
     private Double bid;
     private Double ask;
     private String benchmark;
-    private Timestamp bidListDate;
+    private String bidListDate;
     private String commentary;
     private String security;
     private String status;
     private String trader;
     private String book;
     private String creationName;
-    private Timestamp creationDate;
+    private String creationDate;
     private String revisionName;
-    private Timestamp revisionDate;
+    private String revisionDate;
     private String dealName;
     private String dealType;
     private String sourceListId;
@@ -100,11 +101,11 @@ public class BidList {
         this.benchmark = benchmark;
     }
 
-    public Timestamp getBidListDate() {
+    public String getBidListDate() {
         return bidListDate;
     }
 
-    public void setBidListDate(Timestamp bidListDate) {
+    public void setBidListDate(String bidListDate) {
         this.bidListDate = bidListDate;
     }
 
@@ -156,11 +157,11 @@ public class BidList {
         this.creationName = creationName;
     }
 
-    public Timestamp getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Timestamp creationDate) {
+    public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
 
@@ -172,11 +173,11 @@ public class BidList {
         this.revisionName = revisionName;
     }
 
-    public Timestamp getRevisionDate() {
+    public String getRevisionDate() {
         return revisionDate;
     }
 
-    public void setRevisionDate(Timestamp revisionDate) {
+    public void setRevisionDate(String revisionDate) {
         this.revisionDate = revisionDate;
     }
 

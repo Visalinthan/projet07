@@ -6,6 +6,7 @@ import com.nnk.springboot.security.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -24,7 +25,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
         // securedEnabled = true,
         // jsr250Enabled = true,
         prePostEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig{
     @Autowired
     UserDetailsServiceImpl userDetailsService;
     @Autowired
@@ -36,41 +37,93 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthTokenFilter authenticationJwtTokenFilter() {
         return new AuthTokenFilter();
     }
-    @Override
-    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-        authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-    }
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+    @Configuration
+    @Order(1)
+    public class ApiWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+        @Bean
+        @Override
+        public AuthenticationManager authenticationManagerBean() throws Exception {
+            return super.authenticationManagerBean();
+        }
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            http
+                    .antMatcher("/api/**")
+                    .cors()
+                    .and().csrf().ignoringAntMatchers("/api/**")
+
+                    .and()
+                    .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+
+                    .and()
+                    .authorizeRequests()
+                    .antMatchers("/api/auth/**").permitAll()
+                    .antMatchers("/login").permitAll()
+                    .anyRequest().authenticated();
+            http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        }
+    }
+
+    @Configuration
+    @Order(2)
+    public class FormLoginWebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+        @Override
+        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+            auth
+                    .userDetailsService(userDetailsService)
+                    .passwordEncoder(passwordEncoder());
+        }
+
+        @Override
+        protected void configure(HttpSecurity http) throws Exception {
+            http
+                    .authorizeRequests()
+                    .antMatchers("/api/**", "/user/add").permitAll()
+                    .anyRequest().authenticated()
+                    .and()
+                    .formLogin()
+                    .loginPage("/login").successHandler(successHandler)
+                    .usernameParameter("username")
+                    .passwordParameter("password")
+                    .permitAll()
+                    .and()
+                    .logout()
+                    .permitAll()
+                    .invalidateHttpSession(true).clearAuthentication(true)
+                    .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);
+
+        }
+    }
     /**
      * Cette méthode config va permettre de gérer les filtres
      * @param http
      * @throws Exception
      */
-    @Override
+  /*  @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 
                 .authorizeRequests()
-                .antMatchers("/user/**").hasRole("ROLE_ADMIN")
-                .antMatchers("/bidList/list").hasRole("ROLE_USER")
+               .antMatchers("/user/list").hasRole("ADMIN")
+                .antMatchers("/bidList/list").hasRole("USER")
                 .antMatchers(
-                        "/registration**",
+                        "/user/add",
                         "/js/**",
                         "static/css/**",
                         "/img/**",
                         "/api/test/**").permitAll()
-                /*.anyRequest().authenticated()*/.and()
+                .anyRequest().authenticated().and()
                 .formLogin().successHandler(successHandler)
                 .loginPage("/login").permitAll().and().logout().permitAll()
                 .invalidateHttpSession(true)
@@ -78,6 +131,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout").permitAll();
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-    }
+    }*/
 
 }

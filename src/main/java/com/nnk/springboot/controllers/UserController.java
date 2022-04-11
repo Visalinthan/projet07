@@ -30,7 +30,7 @@ public class UserController {
     PasswordEncoder encoder;
 
     @RequestMapping("/user/list")
-    public String home(Model model)
+    public String homeUser(Model model)
     {
         model.addAttribute("users", userService.list());
         return "user/list";
@@ -68,7 +68,7 @@ public class UserController {
     }
 
     @PostMapping("/user/add")
-    public String validate(@Valid @ModelAttribute("user") SignupRequest signUpRequest, BindingResult result) {
+    public String validateUser(@Valid @ModelAttribute("user") SignupRequest signUpRequest, BindingResult result) {
         if (!result.hasErrors()) {
             User user = new User(signUpRequest.getFullname(), signUpRequest.getUsername(), encoder.encode(signUpRequest.getPassword()), signUpRequest.getEmail());
             Set<String> strRoles = signUpRequest.getRole();
@@ -80,7 +80,7 @@ public class UserController {
     }
 
     @GetMapping("/user/update/{id}")
-    public String showUpdateForm(@PathVariable("id") Long id, Model model) {
+    public String showUpdateFormUser(@PathVariable("id") Long id, Model model) {
         User user = userService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         user.setPassword("");
         model.addAttribute("user", user);
