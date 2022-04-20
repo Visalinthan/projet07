@@ -87,7 +87,12 @@ public class WebSecurityConfig{
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .authorizeRequests()
-                    .antMatchers("/api/**", "/user/add").permitAll()
+                    .antMatchers("/api/**",
+                            "/user/add",
+                            "/js/**",
+                            "static/css/**",
+                            "/img/**",
+                            "/api/test/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
