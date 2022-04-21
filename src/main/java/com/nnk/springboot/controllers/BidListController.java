@@ -2,6 +2,7 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.service.BidListService;
+import com.nnk.springboot.service.Utils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,8 @@ import java.util.List;
 public class BidListController {
 
     private BidListService bidListService;
+
+    private Utils utils;
 
     public BidListController(BidListService bidListService) {
         this.bidListService = bidListService;

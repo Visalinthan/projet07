@@ -22,16 +22,16 @@ public class BidList {
     private Double bid;
     private Double ask;
     private String benchmark;
-    private String bidListDate;
+    private LocalDate bidListDate;
     private String commentary;
     private String security;
     private String status;
     private String trader;
     private String book;
     private String creationName;
-    private String creationDate;
+    private LocalDate creationDate;
     private String revisionName;
-    private String revisionDate;
+    private LocalDate revisionDate;
     private String dealName;
     private String dealType;
     private String sourceListId;
@@ -101,11 +101,11 @@ public class BidList {
         this.benchmark = benchmark;
     }
 
-    public String getBidListDate() {
+    public LocalDate getBidListDate() {
         return bidListDate;
     }
 
-    public void setBidListDate(String bidListDate) {
+    public void setBidListDate(LocalDate bidListDate) {
         this.bidListDate = bidListDate;
     }
 
@@ -157,11 +157,11 @@ public class BidList {
         this.creationName = creationName;
     }
 
-    public String getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(String creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
 
@@ -173,11 +173,11 @@ public class BidList {
         this.revisionName = revisionName;
     }
 
-    public String getRevisionDate() {
+    public LocalDate getRevisionDate() {
         return revisionDate;
     }
 
-    public void setRevisionDate(String revisionDate) {
+    public void setRevisionDate(LocalDate revisionDate) {
         this.revisionDate = revisionDate;
     }
 

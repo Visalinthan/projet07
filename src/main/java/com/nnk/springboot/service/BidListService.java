@@ -16,6 +16,8 @@ public class BidListService {
 
     private BidListRepository bidListRepository;
 
+    private Utils utils;
+
     public BidListService(BidListRepository bidListRepository){
         this.bidListRepository = bidListRepository;
     }
