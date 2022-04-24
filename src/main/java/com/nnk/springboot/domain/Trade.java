@@ -18,15 +18,15 @@ public class Trade {
     private Double buyPrice;
     private Double sellPrice;
     private String benchmark;
-    private Timestamp tradeDate;
+    private String tradeDate;
     private String security;
     private String status;
     private String trader;
     private String book;
     private String creationName;
-    private Timestamp creationDate;
+    private String creationDate;
     private String revisionName;
-    private Timestamp revisionDate;
+    private String revisionDate;
     private String dealName;
     private String dealType;
     private String sourceListId;
@@ -96,11 +96,11 @@ public class Trade {
         this.benchmark = benchmark;
     }
 
-    public Timestamp getTradeDate() {
+    public String getTradeDate() {
         return tradeDate;
     }
 
-    public void setTradeDate(Timestamp tradeDate) {
+    public void setTradeDate(String tradeDate) {
         this.tradeDate = tradeDate;
     }
 
@@ -144,11 +144,11 @@ public class Trade {
         this.creationName = creationName;
     }
 
-    public Timestamp getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Timestamp creationDate) {
+    public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
 
@@ -160,11 +160,11 @@ public class Trade {
         this.revisionName = revisionName;
     }
 
-    public Timestamp getRevisionDate() {
+    public String getRevisionDate() {
         return revisionDate;
     }
 
-    public void setRevisionDate(Timestamp revisionDate) {
+    public void setRevisionDate(String revisionDate) {
         this.revisionDate = revisionDate;
     }
 

@@ -15,10 +15,10 @@ public class CurvePoint {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
     private Integer curveId;
-    private Timestamp asOfDate;
+    private String asOfDate;
     private Double term;
     private Double value;
-    private Timestamp creationDate;
+    private String creationDate;
 
     public Integer getId() {
         return id;
@@ -36,11 +36,11 @@ public class CurvePoint {
         this.curveId = curveId;
     }
 
-    public Timestamp getAsOfDate() {
+    public String getAsOfDate() {
         return asOfDate;
     }
 
-    public void setAsOfDate(Timestamp asOfDate) {
+    public void setAsOfDate(String asOfDate) {
         this.asOfDate = asOfDate;
     }
 
@@ -60,11 +60,11 @@ public class CurvePoint {
         this.value = value;
     }
 
-    public Timestamp getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Timestamp creationDate) {
+    public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
 }

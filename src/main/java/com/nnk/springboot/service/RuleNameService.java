@@ -26,7 +26,7 @@ public class RuleNameService {
     public Optional<RuleName> findById(Integer id){return this.ruleNameRepository.findById(id);}
 
     public RuleName save(RuleName ruleName){
-        return this.save(ruleName);
+        return this.ruleNameRepository.save(ruleName);
     }
 
     public RuleName update(RuleName newRuleName){

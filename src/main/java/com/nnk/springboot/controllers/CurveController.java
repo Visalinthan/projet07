@@ -38,7 +38,7 @@ public class CurveController {
     public String validateCurve(@Valid CurvePoint curvePoint, BindingResult result, Model model) {
         if (!result.hasErrors()) {
             curvePointService.save(curvePoint);
-            model.addAttribute("bidLists", curvePointService.list());
+            model.addAttribute("curvePoints", curvePointService.list());
             return "redirect:/curvePoint/list";
         }
         return "curvePoint/add";
@@ -47,7 +47,7 @@ public class CurveController {
     @GetMapping("/curvePoint/update/{id}")
     public String showUpdateFormCurve(@PathVariable("id") Integer id, Model model) {
         CurvePoint curvePoint = curvePointService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid curvePoint Id:" + id));
-        model.addAttribute("curvePoint", curvePoint);
+        model.addAttribute("curvePoints", curvePoint);
         return "curvePoint/update";
     }
 
@@ -58,7 +58,7 @@ public class CurveController {
             return "curvePoint/update";
         }
         curvePoint.setId(id);
-        curvePointService.update(curvePoint);
+        curvePointService.update(curvePoint,id);
         model.addAttribute("curvePoints", curvePointService.list());
         return "redirect:/curvePoint/list";
     }

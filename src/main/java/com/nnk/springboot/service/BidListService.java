@@ -30,8 +30,8 @@ public class BidListService {
         return this.bidListRepository.save(bidList);
     }
 
-    public BidList update(BidList newBidList){
-        Optional<BidList> bidListFind = this.bidListRepository.findById(newBidList.getId());
+    public BidList update(BidList newBidList, int id){
+        Optional<BidList> bidListFind = this.bidListRepository.findById(id);
 
         BidList bidListUpdated = null;
 

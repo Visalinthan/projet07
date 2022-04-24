@@ -65,7 +65,7 @@ public class WebSecurityConfig{
 
                     .and()
                     .authorizeRequests()
-                    .antMatchers("/api/auth/**").permitAll()
+                    .antMatchers("/api/**").permitAll()
                     .antMatchers("/login").permitAll()
                     .anyRequest().authenticated();
             http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -102,6 +102,10 @@ public class WebSecurityConfig{
                     .permitAll()
                     .and()
                     .logout()
+                    .invalidateHttpSession(true)
+                    .clearAuthentication(true)
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                    .logoutSuccessUrl("/login?logout")
                     .permitAll()
                     .invalidateHttpSession(true).clearAuthentication(true)
                     .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED);

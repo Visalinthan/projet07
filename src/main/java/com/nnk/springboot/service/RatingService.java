@@ -26,7 +26,7 @@ public class RatingService {
     public Optional<Rating> findById(Integer id){return this.ratingRepository.findById(id);}
 
     public Rating save(Rating rating){
-        return this.save(rating);
+        return this.ratingRepository.save(rating);
     }
 
     public Rating update(Rating newRating){

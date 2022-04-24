@@ -25,11 +25,11 @@ public class CurvePointService {
     public Optional<CurvePoint> findById(Integer id){return this.curvePointRepository.findById(id);}
 
     public CurvePoint save(CurvePoint curvePoint){
-        return this.save(curvePoint);
+        return this.curvePointRepository.save(curvePoint);
     }
 
-    public CurvePoint update(CurvePoint newCurvePoint){
-        Optional<CurvePoint> curvePointFind = this.curvePointRepository.findById(newCurvePoint.getId());
+    public CurvePoint update(CurvePoint newCurvePoint, int id){
+        Optional<CurvePoint> curvePointFind = this.curvePointRepository.findById(id);
         CurvePoint curvePointUpdated = null;
 
         if (curvePointFind.isPresent()){

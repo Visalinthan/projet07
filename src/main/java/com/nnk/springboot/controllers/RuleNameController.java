@@ -36,7 +36,7 @@ public class RuleNameController {
         if (!result.hasErrors()) {
             ruleNameService.save(ruleName);
             model.addAttribute("bidLists", ruleNameService.list());
-            return "redirect:/curvePoint/list";
+            return "redirect:/ruleName/list";
         }
         return "ruleName/add";
     }

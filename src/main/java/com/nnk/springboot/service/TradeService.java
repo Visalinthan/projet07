@@ -25,7 +25,7 @@ public class TradeService {
     public Optional<Trade> findById(Integer id){return this.tradeRepository.findById(id);}
 
     public Trade save(Trade rating){
-        return this.save(rating);
+        return this.tradeRepository.save(rating);
     }
 
     public Trade update(Trade newTrade){

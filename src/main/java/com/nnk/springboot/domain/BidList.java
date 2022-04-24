@@ -1,12 +1,6 @@
 package com.nnk.springboot.domain;
 
-import org.springframework.beans.factory.annotation.Required;
-
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotBlank;
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @Entity
@@ -22,16 +16,16 @@ public class BidList {
     private Double bid;
     private Double ask;
     private String benchmark;
-    private LocalDate bidListDate;
+    private String bidListDate;
     private String commentary;
     private String security;
     private String status;
     private String trader;
     private String book;
     private String creationName;
-    private LocalDate creationDate;
+    private String creationDate;
     private String revisionName;
-    private LocalDate revisionDate;
+    private String revisionDate;
     private String dealName;
     private String dealType;
     private String sourceListId;
@@ -101,11 +95,11 @@ public class BidList {
         this.benchmark = benchmark;
     }
 
-    public LocalDate getBidListDate() {
+    public String getBidListDate() {
         return bidListDate;
     }
 
-    public void setBidListDate(LocalDate bidListDate) {
+    public void setBidListDate(String bidListDate) {
         this.bidListDate = bidListDate;
     }
 
@@ -157,11 +151,11 @@ public class BidList {
         this.creationName = creationName;
     }
 
-    public LocalDate getCreationDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
+    public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
 
@@ -173,11 +167,11 @@ public class BidList {
         this.revisionName = revisionName;
     }
 
-    public LocalDate getRevisionDate() {
+    public String getRevisionDate() {
         return revisionDate;
     }
 
-    public void setRevisionDate(LocalDate revisionDate) {
+    public void setRevisionDate(String revisionDate) {
         this.revisionDate = revisionDate;
     }
 
