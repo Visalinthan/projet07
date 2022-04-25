@@ -55,7 +55,7 @@ public class RuleNameController {
             return "curvePoint/update";
         }
         ruleName.setId(id);
-        ruleNameService.update(ruleName);
+        ruleNameService.update(ruleName, id);
         model.addAttribute("ruleNames", ruleNameService.list());
         return "redirect:/ruleName/list";
     }

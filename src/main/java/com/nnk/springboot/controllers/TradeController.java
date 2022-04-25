@@ -54,7 +54,7 @@ public class TradeController {
             return "curvePoint/update";
         }
         trade.setId(id);
-        tradeService.update(trade);
+        tradeService.update(trade, id);
         model.addAttribute("trades", tradeService.list());
         return "redirect:/trade/list";
     }

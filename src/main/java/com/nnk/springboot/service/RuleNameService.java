@@ -1,6 +1,5 @@
 package com.nnk.springboot.service;
 
-import com.nnk.springboot.domain.CurvePoint;
 import com.nnk.springboot.domain.RuleName;
 import com.nnk.springboot.repositories.RuleNameRepository;
 import org.springframework.stereotype.Service;
@@ -29,7 +28,7 @@ public class RuleNameService {
         return this.ruleNameRepository.save(ruleName);
     }
 
-    public RuleName update(RuleName newRuleName){
+    public RuleName update(RuleName newRuleName, int id){
         Optional<RuleName> ruleNameFind = this.ruleNameRepository.findById(newRuleName.getId());
         RuleName ruleNameUpdated = null;
 

@@ -29,7 +29,7 @@ public class RatingService {
         return this.ratingRepository.save(rating);
     }
 
-    public Rating update(Rating newRating){
+    public Rating update(Rating newRating, int id){
         Optional<Rating> ratingFind = this.ratingRepository.findById(newRating.getId());
         Rating ratingUpdated = null;
 
