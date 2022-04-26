@@ -6,7 +6,6 @@ import com.nnk.springboot.repositories.BidListRepository;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,8 +29,8 @@ public class BidListService {
         return this.bidListRepository.save(bidList);
     }
 
-    public BidList update(BidList newBidList, int id){
-        Optional<BidList> bidListFind = this.bidListRepository.findById(id);
+    public BidList update(BidList newBidList){
+        Optional<BidList> bidListFind = this.bidListRepository.findById(newBidList.getId());
 
         BidList bidListUpdated = null;
 

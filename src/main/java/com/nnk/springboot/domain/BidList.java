@@ -1,6 +1,8 @@
 package com.nnk.springboot.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 @Entity
@@ -9,26 +11,68 @@ public class BidList {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
+
+    @NotBlank(message = "Account is mandatory")
     private String account;
+
+    @NotBlank(message = "Type is mandatory")
     private String type;
+
+    @NotBlank(message = "Bid quantity is mandatory")
     private Double bidQuantity;
+
+    @NotBlank(message = "Ask quantity is mandatory")
     private Double askQuantity;
+
+    @NotBlank(message = "Bid is mandatory")
     private Double bid;
+
+    @NotBlank(message = "Ask is mandatory")
     private Double ask;
+
+    @NotBlank(message = "Benchmark is mandatory")
     private String benchmark;
+
+    @NotBlank(message = "Bid list date is mandatory")
     private String bidListDate;
+
+    @NotBlank(message = "Commentary is mandatory")
     private String commentary;
+
+    @NotBlank(message = "Security is mandatory")
     private String security;
+
+    @NotBlank(message = "Status is mandatory")
     private String status;
+
+    @NotBlank(message = "Trader is mandatory")
     private String trader;
+
+    @NotBlank(message = "Book is mandatory")
     private String book;
+
+    @NotBlank(message = "Creation name is mandatory")
     private String creationName;
+
+    @NotBlank(message = "Creation date is mandatory")
     private String creationDate;
+
+    @NotBlank(message = "Revision name is mandatory")
     private String revisionName;
+
+    @NotBlank(message = "Revision date is mandatory")
     private String revisionDate;
+
+    @NotBlank(message = "Deal name is mandatory")
     private String dealName;
+
+    @NotBlank(message = "Deal type is mandatory")
     private String dealType;
+
+    @NotBlank(message = "Source list id is mandatory")
     private String sourceListId;
+
+    @NotBlank(message = "Side is mandatory")
     private String side;
 
     public Integer getId() {

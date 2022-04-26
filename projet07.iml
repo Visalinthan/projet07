@@ -105,5 +105,6 @@
     <orderEntry type="library" name="Maven: org.tinylog:tinylog-api:2.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.tinylog:tinylog-impl:2.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.18" level="project" />
+    <orderEntry type="library" name="Maven: org.passay:passay:1.6.1" level="project" />
   </component>
 </module>

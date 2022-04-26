@@ -11,25 +11,65 @@ public class Trade {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
+
+    @NotBlank(message = "Account is mandatory")
     private String account;
+
+    @NotBlank(message = "Type is mandatory")
     private String type;
+
+    @NotBlank(message = "Buy quantity is mandatory")
     private Double buyQuantity;
+
+    @NotBlank(message = "Sell Quantity is mandatory")
     private Double sellQuantity;
+
+    @NotBlank(message = "Buy price is mandatory")
     private Double buyPrice;
+
+    @NotBlank(message = "Sell price is mandatory")
     private Double sellPrice;
+
+    @NotBlank(message = "Benchmark is mandatory")
     private String benchmark;
+
+    @NotBlank(message = "Trade date is mandatory")
     private String tradeDate;
+
+    @NotBlank(message = "Security is mandatory")
     private String security;
+
+    @NotBlank(message = "Status is mandatory")
     private String status;
+
+    @NotBlank(message = "Trader is mandatory")
     private String trader;
+
+    @NotBlank(message = "Book is mandatory")
     private String book;
+
+    @NotBlank(message = "Creation name is mandatory")
     private String creationName;
+
+    @NotBlank(message = "Creation date is mandatory")
     private String creationDate;
+
+    @NotBlank(message = "Revision name is mandatory")
     private String revisionName;
+
+    @NotBlank(message = "Revision date is mandatory")
     private String revisionDate;
+
+    @NotBlank(message = "Deal name is mandatory")
     private String dealName;
+
+    @NotBlank(message = "Deal type is mandatory")
     private String dealType;
+
+    @NotBlank(message = "Source list is is mandatory")
     private String sourceListId;
+
+    @NotBlank(message = "Side is mandatory")
     private String side;
 
     public Integer getId() {
