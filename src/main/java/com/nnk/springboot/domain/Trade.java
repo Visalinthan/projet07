@@ -2,6 +2,7 @@ package com.nnk.springboot.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 
@@ -18,16 +19,16 @@ public class Trade {
     @NotBlank(message = "Type is mandatory")
     private String type;
 
-    @NotBlank(message = "Buy quantity is mandatory")
+    @NotNull(message = "Buy quantity is mandatory")
     private Double buyQuantity;
 
-    @NotBlank(message = "Sell Quantity is mandatory")
+    @NotNull(message = "Sell Quantity is mandatory")
     private Double sellQuantity;
 
-    @NotBlank(message = "Buy price is mandatory")
+    @NotNull(message = "Buy price is mandatory")
     private Double buyPrice;
 
-    @NotBlank(message = "Sell price is mandatory")
+    @NotNull(message = "Sell price is mandatory")
     private Double sellPrice;
 
     @NotBlank(message = "Benchmark is mandatory")

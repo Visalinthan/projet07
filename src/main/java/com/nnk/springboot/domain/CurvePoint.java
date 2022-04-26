@@ -21,10 +21,10 @@ public class CurvePoint {
     @NotBlank(message = "As of date is mandatory")
     private String asOfDate;
 
-    @NotBlank(message = "Term is mandatory")
+    @NotNull(message = "Term is mandatory")
     private Double term;
 
-    @NotBlank(message = "Value is mandatory")
+    @NotNull(message = "Value is mandatory")
     private Double value;
 
     @NotBlank(message = "Creation date is mandatory")

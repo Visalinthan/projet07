@@ -21,7 +21,7 @@ public class Rating {
     @NotBlank(message = "Fitch rating is mandatory")
     private String fitchRating;
 
-    @NotBlank(message = "Order number is mandatory")
+    @NotNull(message = "Order number is mandatory")
     private Integer orderNumber;
 
     public Integer getId() {
