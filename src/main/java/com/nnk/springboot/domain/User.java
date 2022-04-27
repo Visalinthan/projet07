@@ -1,6 +1,9 @@
 package com.nnk.springboot.domain;
 
+import com.nnk.springboot.security.validator.ValidPassword;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,11 +21,11 @@ public class User {
     @NotBlank(message = "Username is mandatory")
     private String username;
 
+    @Email(message = "Enter valid email")
     @NotBlank(message = "Email is mandatory")
     private String email;
 
-    @NotBlank(message = "Password is mandatory")
-    @ValidPassword
+    //@ValidPassword
     private String password;
 
 

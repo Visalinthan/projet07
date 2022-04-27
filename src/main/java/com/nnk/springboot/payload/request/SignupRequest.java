@@ -1,28 +1,26 @@
 package com.nnk.springboot.payload.request;
 
+import com.nnk.springboot.security.validator.ValidPassword;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
 public class SignupRequest {
-    @NotBlank
-    @Size(min = 3, max = 20)
+    @NotBlank(message = "Fullname is mandatory")
     private String fullname;
 
-    @NotBlank
-    @Size(min = 3, max = 20)
+    @NotBlank(message = "Fullname is mandatory")
     private String username;
 
-    @NotBlank
-    @Size(max = 50)
+    @NotBlank(message = "Fullname is mandatory")
     @Email
     private String email;
 
     private Set<String> role;
 
-    @NotBlank
-    @Size(min = 6, max = 40)
+    //@ValidPassword
     private String password;
 
     public String getFullname() {

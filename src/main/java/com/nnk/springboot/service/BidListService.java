@@ -3,6 +3,7 @@ package com.nnk.springboot.service;
 
 import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.BidListRepository;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 @Service
 @Transactional
+@Component
 public class BidListService {
 
     private BidListRepository bidListRepository;

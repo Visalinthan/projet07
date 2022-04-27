@@ -65,7 +65,12 @@ public class WebSecurityConfig{
 
                     .and()
                     .authorizeRequests()
-                    .antMatchers("/api/**").permitAll()
+                    .antMatchers("/api/**",
+                            "/user/add",
+                            "/js/**",
+                            "/static/css/**",
+                            "/img/**",
+                            "/api/test/**").permitAll()
                     .antMatchers("/login").permitAll()
                     .anyRequest().authenticated();
             http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
@@ -90,9 +95,10 @@ public class WebSecurityConfig{
                     .antMatchers("/api/**",
                             "/user/add",
                             "/js/**",
-                            "static/css/**",
+                            "/static/css/**",
                             "/img/**",
                             "/api/test/**").permitAll()
+                    .antMatchers("/user/**").hasRole("ADMIN")
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
