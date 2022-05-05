@@ -51,8 +51,8 @@ public class BidListController {
     @GetMapping("/bidList/update/{id}")
     public String showUpdateBidForm(@PathVariable("id") Integer id, Model model) {
         BidList bidList = bidListService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid bidList Id:" + id));
-        model.addAttribute("bidLists", bidList);
-        return "bidList/update";
+        model.addAttribute("bidList", bidList);
+        return "ruleName/update";
     }
 
     @PostMapping("/bidList/update/{id}")
@@ -61,7 +61,7 @@ public class BidListController {
         if (result.hasErrors()) {
             return "bidList/update";
         }
-        bidListService.update(bidList);
+        bidListService.update(bidList,id);
         model.addAttribute("bidLists", bidListService.list());
         return "redirect:/bidList/list";
     }

@@ -38,9 +38,9 @@ public class BidListApi {
     }
 
     @PutMapping("/bidList/{id}")
-        public ResponseEntity<BidList> updateBidList(@PathVariable("id") int id,@RequestBody BidList bidList) throws  Exception{
+        public ResponseEntity<BidList> updatebidList(@PathVariable("id") int id,@RequestBody BidList bidList) throws  Exception{
 
-        BidList result = bidListService.update(bidList);
+        BidList result = bidListService.update(bidList,id);
 
         Logger.info("La bidList l'id n° "+id +" a été modifié !");
 

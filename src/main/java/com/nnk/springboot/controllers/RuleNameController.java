@@ -35,7 +35,7 @@ public class RuleNameController {
     public String validateRuleName(@Valid RuleName ruleName, BindingResult result, Model model) {
         if (!result.hasErrors()) {
             ruleNameService.save(ruleName);
-            model.addAttribute("bidLists", ruleNameService.list());
+            model.addAttribute("ruleNames", ruleNameService.list());
             return "redirect:/ruleName/list";
         }
         return "ruleName/add";
@@ -44,7 +44,7 @@ public class RuleNameController {
     @GetMapping("/ruleName/update/{id}")
     public String showUpdateFormRuleName(@PathVariable("id") Integer id, Model model) {
         RuleName ruleName = ruleNameService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid ruleName Id:" + id));
-        model.addAttribute("ruleNames", ruleName);
+        model.addAttribute("ruleName", ruleName);
         return "ruleName/update";
     }
 
@@ -54,8 +54,8 @@ public class RuleNameController {
         if (result.hasErrors()) {
             return "curvePoint/update";
         }
-        ruleName.setId(id);
-        ruleNameService.update(ruleName, id);
+
+        ruleNameService.update(ruleName,id);
         model.addAttribute("ruleNames", ruleNameService.list());
         return "redirect:/ruleName/list";
     }

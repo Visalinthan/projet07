@@ -36,7 +36,7 @@ public class LoginController {
     @GetMapping("/user")
     @RolesAllowed("USER")
     public ModelAndView getUser() {
-        return new ModelAndView("bidList/list");
+        return new ModelAndView("ruleName/list");
     }
 
 

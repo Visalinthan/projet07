@@ -4,16 +4,20 @@ import com.nnk.springboot.domain.BidList;
 import com.nnk.springboot.repositories.BidListRepository;
 import com.nnk.springboot.service.BidListService;
 import org.junit.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
+@RunWith(MockitoJUnitRunner.class)
 public class BidListServiceTest {
 
 	@InjectMocks
@@ -27,28 +31,18 @@ public class BidListServiceTest {
 		BidList bid = new BidList();
 		bid.setId(1);
 		bid.setAccount("Account Test");
-		bid.setType("Type Test");
-		bid.setBidQuantity(10.0);
-		bid.setAskQuantity(10.0);
-		bid.setBid(10.0);
-		bid.setAsk(10.0);
-		bid.setBenchmark("bench");
-		bid.setBidListDate("2022-01-20");
-		bid.setCommentary("comment");
-		bid.setSecurity("security");
-		bid.setStatus("status");
-		bid.setTrader("trader");
-		bid.setBook("book");
-		bid.setCreationName("test");
-		bid.setCreationDate("2022-01-20");
-		bid.setRevisionName("revision");
-		bid.setRevisionDate("2022-01-20");
-		bid.setDealName("deal name");
-		bid.setDealType("deal type");
-		bid.setSourceListId("test");
-		bid.setSide("side");
 
 		return bid;
+	}
+
+	@Test
+	public void list(){
+		List<BidList> bidLists = new ArrayList<>();
+		bidLists.add(getBidList());
+
+		when(bidListRepository.findAll()).thenReturn(bidLists);
+
+		assertThat(bidListService.list().get(0).getId()).isEqualTo(getBidList().getId());
 	}
 
 	@Test
@@ -60,5 +54,25 @@ public class BidListServiceTest {
 
 		assertThat(bidListService.save(bid)).isEqualTo(bid);
 
+	}
+
+	@Test
+	public void update(){
+		BidList bidList = getBidList();
+
+		when(bidListRepository.findById(bidList.getId())).thenReturn(Optional.of(getBidList()));
+		when(bidListRepository.save(ArgumentMatchers.any(BidList.class))).thenReturn(bidList);
+
+		assertThat(bidListService.update(bidList, bidList.getId())).isEqualTo(bidList);
+
+	}
+
+	@Test
+	public void delete() {
+		BidList bidList = getBidList();
+
+		bidListService.deleteById(bidList.getId());
+
+		verify(bidListRepository, times(1)).deleteById(bidList.getId());
 	}
 }

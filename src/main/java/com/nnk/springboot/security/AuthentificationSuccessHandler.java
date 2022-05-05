@@ -29,7 +29,7 @@ class UserAuthentificationSuccessHandler implements AuthenticationSuccessHandler
         boolean hasAdminRole = authorities.stream().filter(r->r.getAuthority().equals(ERole.ROLE_ADMIN.name())).count()>0;
 
         if (hasUserRole) {
-            redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "bidList/list");
+            redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "ruleName/list");
         } else if (hasAdminRole) {
             redirectStrategy.sendRedirect(httpServletRequest, httpServletResponse, "user/list");
         } else {

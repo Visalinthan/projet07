@@ -1,6 +1,6 @@
 
-CREATE TABLE BidList (
-  BidListId tinyint(4) NOT NULL AUTO_INCREMENT,
+CREATE TABLE ruleName (
+  ruleNameId tinyint(4) NOT NULL AUTO_INCREMENT,
   account VARCHAR(30) NOT NULL,
   type VARCHAR(30) NOT NULL,
   bidQuantity DOUBLE,
@@ -8,7 +8,7 @@ CREATE TABLE BidList (
   bid DOUBLE ,
   ask DOUBLE,
   benchmark VARCHAR(125),
-  bidListDate TIMESTAMP,
+  ruleNameDate TIMESTAMP,
   commentary VARCHAR(125),
   security VARCHAR(125),
   status VARCHAR(10),
@@ -23,7 +23,7 @@ CREATE TABLE BidList (
   sourceListId VARCHAR(125),
   side VARCHAR(125),
 
-  PRIMARY KEY (BidListId)
+  PRIMARY KEY (ruleNameId)
 );
 
 CREATE TABLE Trade (

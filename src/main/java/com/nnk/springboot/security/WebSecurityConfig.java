@@ -131,7 +131,7 @@ public class WebSecurityConfig{
 
                 .authorizeRequests()
                .antMatchers("/user/list").hasRole("ADMIN")
-                .antMatchers("/bidList/list").hasRole("USER")
+                .antMatchers("/ruleName/list").hasRole("USER")
                 .antMatchers(
                         "/user/add",
                         "/js/**",

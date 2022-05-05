@@ -54,9 +54,8 @@ public class RatingController {
         if (result.hasErrors()) {
             return "rating/update";
         }
-        rating.setId(id);
-        ratingService.update(rating, id);
-        model.addAttribute("ratings", ratingService.list());
+        ratingService.update(rating,id);
+        model.addAttribute("rating", ratingService.list());
         return "redirect:/rating/list";
     }
 

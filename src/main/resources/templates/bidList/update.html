@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="row">
-		<form action="#" th:action="@{/bidList/update/{id}(id=${bidList.id})}" th:object="${bidList}" method="post" class="form-horizontal" style="width: 100%">
+		<form action="#" th:action="@{/bidList/update/{id}(id=${ruleName.id})}" th:object="${bidList}" method="post" class="form-horizontal" style="width: 100%">
 				<div class="form-group">
 					<label for="account" class="col-sm-2 control-label">Account</label>
 					<div class="col-sm-10">
@@ -68,8 +68,8 @@
 				<div class="form-group">
 					<label for="bidListDate" class="col-sm-2 control-label">bidListDate</label>
 					<div class="col-sm-10">
-						<input type="date" th:field="*{bidListDate}" id="bidListDate" placeholder="bidListDate" class="col-4">
-						<p class="text-danger" th:if="${#fields.hasErrors('bidListDate')}" th:errors="*{bidListDate}"></p>
+						<input type="text" th:field="*{bidListDate}" id="bidListDate" placeholder="bidListDate" class="col-4">
+						<p class="text-danger" th:if="${#fields.hasErrors('ruleNameDate')}" th:errors="*{bidListDate}"></p>
 					</div>
 				</div>
 
@@ -124,7 +124,7 @@
 				<div class="form-group">
 					<label for="creationDate" class="col-sm-2 control-label">creationDate</label>
 					<div class="col-sm-10">
-						<input type="date" th:field="*{creationDate}" id="creationDate" placeholder="creationName" class="col-4">
+						<input type="text" th:field="*{creationDate}" id="creationDate" placeholder="creationName" class="col-4">
 						<p class="text-danger" th:if="${#fields.hasErrors('creationDate')}" th:errors="*{creationDate}"></p>
 					</div>
 				</div>
@@ -140,7 +140,7 @@
 				<div class="form-group">
 					<label for="revisionDate" class="col-sm-2 control-label">revisionDate</label>
 					<div class="col-sm-10">
-						<input type="date" th:field="*{revisionDate}" id="revisionDate" placeholder="revisionDate" class="col-4">
+						<input type="text" th:field="*{revisionDate}" id="revisionDate" placeholder="revisionDate" class="col-4">
 						<p class="text-danger" th:if="${#fields.hasErrors('revisionDate')}" th:errors="*{revisionDate}"></p>
 					</div>
 				</div>

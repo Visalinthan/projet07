@@ -1,2 +1,2 @@
-2022-04-22 10:38:36 [http-nio-9090-exec-4] com.nnk.springboot.api.BidListApi.getBid()
-INFO: bidList listé !
+2022-04-22 10:38:36 [http-nio-9090-exec-4] com.nnk.springboot.api.ruleNameApi.getBid()
+INFO: ruleName listé !

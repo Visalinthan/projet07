@@ -17,7 +17,6 @@ public class BidListService {
 
     private BidListRepository bidListRepository;
 
-    private Utils utils;
 
     public BidListService(BidListRepository bidListRepository){
         this.bidListRepository = bidListRepository;
@@ -31,39 +30,39 @@ public class BidListService {
         return this.bidListRepository.save(bidList);
     }
 
-    public BidList update(BidList newBidList){
-        Optional<BidList> bidListFind = this.bidListRepository.findById(newBidList.getId());
+    public BidList update(BidList newBid, int id){
+        Optional<BidList> bidListFind = this.bidListRepository.findById(id);
 
-        BidList bidListUpdated = null;
+        BidList bidUpdated = null;
 
         if(bidListFind.isPresent()){
-            BidList bidListUpdate = bidListFind.get();
-            bidListUpdate.setAccount(newBidList.getAccount());
-            bidListUpdate.setType(newBidList.getType());
-            bidListUpdate.setBidQuantity(newBidList.getBidQuantity());
-            bidListUpdate.setAskQuantity(newBidList.getAskQuantity());
-            bidListUpdate.setBid(newBidList.getBid());
-            bidListUpdate.setAsk(newBidList.getAsk());
-            bidListUpdate.setBenchmark(newBidList.getBenchmark());
-            bidListUpdate.setBidListDate(newBidList.getBidListDate());
-            bidListUpdate.setCommentary(newBidList.getCommentary());
-            bidListUpdate.setSecurity(newBidList.getSecurity());
-            bidListUpdate.setStatus(newBidList.getStatus());
-            bidListUpdate.setTrader(newBidList.getTrader());
-            bidListUpdate.setBook(newBidList.getBook());
-            bidListUpdate.setCreationName(newBidList.getCreationName());
-            bidListUpdate.setCreationDate(newBidList.getCreationDate());
-            bidListUpdate.setRevisionName(newBidList.getRevisionName());
-            bidListUpdate.setRevisionDate(newBidList.getRevisionDate());
-            bidListUpdate.setDealName(newBidList.getDealName());
-            bidListUpdate.setDealType(newBidList.getDealType());
-            bidListUpdate.setSourceListId(newBidList.getSourceListId());
-            bidListUpdate.setSide(newBidList.getSide());
+            BidList ruleNameUpdate = bidListFind.get();
+            ruleNameUpdate.setAccount(newBid.getAccount());
+            ruleNameUpdate.setType(newBid.getType());
+            ruleNameUpdate.setBidQuantity(newBid.getBidQuantity());
+            ruleNameUpdate.setAskQuantity(newBid.getAskQuantity());
+            ruleNameUpdate.setBid(newBid.getBid());
+            ruleNameUpdate.setAsk(newBid.getAsk());
+            ruleNameUpdate.setBenchmark(newBid.getBenchmark());
+            ruleNameUpdate.setruleNameDate(newBid.getruleNameDate());
+            ruleNameUpdate.setCommentary(newBid.getCommentary());
+            ruleNameUpdate.setSecurity(newBid.getSecurity());
+            ruleNameUpdate.setStatus(newBid.getStatus());
+            ruleNameUpdate.setTrader(newBid.getTrader());
+            ruleNameUpdate.setBook(newBid.getBook());
+            ruleNameUpdate.setCreationName(newBid.getCreationName());
+            ruleNameUpdate.setCreationDate(newBid.getCreationDate());
+            ruleNameUpdate.setRevisionName(newBid.getRevisionName());
+            ruleNameUpdate.setRevisionDate(newBid.getRevisionDate());
+            ruleNameUpdate.setDealName(newBid.getDealName());
+            ruleNameUpdate.setDealType(newBid.getDealType());
+            ruleNameUpdate.setSourceListId(newBid.getSourceListId());
+            ruleNameUpdate.setSide(newBid.getSide());
 
-            bidListUpdated = this.bidListRepository.save(bidListUpdate);
+            bidUpdated = bidListRepository.save(ruleNameUpdate);
         }
 
-        return bidListUpdated;
+        return bidUpdated;
     }
 
     public void deleteById(Integer id){

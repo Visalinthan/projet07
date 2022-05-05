@@ -1,6 +1,6 @@
 package com.nnk.springboot.api;
 
-import com.nnk.springboot.domain.BidList;
+
 import com.nnk.springboot.domain.RuleName;
 import com.nnk.springboot.payload.response.MessageResponse;
 import com.nnk.springboot.service.RuleNameService;

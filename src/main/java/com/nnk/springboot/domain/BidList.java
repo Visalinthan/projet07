@@ -35,7 +35,7 @@ public class BidList {
     private String benchmark;
 
     @NotBlank(message = "Bid list date is mandatory")
-    private String bidListDate;
+    private String ruleNameDate;
 
     @NotBlank(message = "Commentary is mandatory")
     private String commentary;
@@ -140,12 +140,12 @@ public class BidList {
         this.benchmark = benchmark;
     }
 
-    public String getBidListDate() {
-        return bidListDate;
+    public String getruleNameDate() {
+        return ruleNameDate;
     }
 
-    public void setBidListDate(String bidListDate) {
-        this.bidListDate = bidListDate;
+    public void setruleNameDate(String ruleNameDate) {
+        this.ruleNameDate = ruleNameDate;
     }
 
     public String getCommentary() {

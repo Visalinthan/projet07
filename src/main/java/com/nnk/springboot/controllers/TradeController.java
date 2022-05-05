@@ -43,7 +43,7 @@ public class TradeController {
     @GetMapping("/trade/update/{id}")
     public String showUpdateFormTrade(@PathVariable("id") Integer id, Model model) {
         Trade trade = tradeService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid trade Id:" + id));
-        model.addAttribute("trades", trade);
+        model.addAttribute("trade", trade);
         return "trade/update";
     }
 
@@ -53,8 +53,7 @@ public class TradeController {
         if (result.hasErrors()) {
             return "curvePoint/update";
         }
-        trade.setId(id);
-        tradeService.update(trade, id);
+        tradeService.update(trade,id);
         model.addAttribute("trades", tradeService.list());
         return "redirect:/trade/list";
     }
