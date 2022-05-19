@@ -118,34 +118,5 @@ public class WebSecurityConfig{
 
         }
     }
-    /**
-     * Cette méthode config va permettre de gérer les filtres
-     * @param http
-     * @throws Exception
-     */
-  /*  @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable()
-                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-
-                .authorizeRequests()
-               .antMatchers("/user/list").hasRole("ADMIN")
-                .antMatchers("/ruleName/list").hasRole("USER")
-                .antMatchers(
-                        "/user/add",
-                        "/js/**",
-                        "static/css/**",
-                        "/img/**",
-                        "/api/test/**").permitAll()
-                .anyRequest().authenticated().and()
-                .formLogin().successHandler(successHandler)
-                .loginPage("/login").permitAll().and().logout().permitAll()
-                .invalidateHttpSession(true)
-                .clearAuthentication(true)
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login?logout").permitAll();
-        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-    }*/
 
 }

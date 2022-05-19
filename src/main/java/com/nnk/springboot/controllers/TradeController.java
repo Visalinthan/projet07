@@ -51,7 +51,7 @@ public class TradeController {
     public String updateTrade(@PathVariable("id") Integer id, @Valid Trade trade,
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "curvePoint/update";
+            return "trade/update";
         }
         tradeService.update(trade,id);
         model.addAttribute("trades", tradeService.list());

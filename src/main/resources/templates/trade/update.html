@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="row">
-		<form action="#" th:action="@{/trade/update/{id}(id=${trade.tradeId})}" th:object="${trade}" method="post" class="form-horizontal" style="width: 100%">
+		<form action="#" th:action="@{/trade/update/{id}(id=${trade.id})}" th:object="${trade}" method="post" class="form-horizontal" style="width: 100%">
 			<div class="form-group">
 				<label for="account" class="col-sm-2 control-label">Account</label>
 				<div class="col-sm-10">
@@ -114,7 +114,7 @@
 			<div class="form-group">
 				<label for="creationName" class="col-sm-2 control-label">creationName</label>
 				<div class="col-sm-10">
-					<input type="text" th:field="*{book}" id="creationName" placeholder="book" class="col-4">
+					<input type="text" th:field="*{creationName}" id="creationName" placeholder="creationName" class="col-4">
 					<p class="text-danger" th:if="${#fields.hasErrors('creationName')}" th:errors="*{creationName}"></p>
 				</div>
 			</div>

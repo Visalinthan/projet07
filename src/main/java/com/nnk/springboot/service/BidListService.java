@@ -36,30 +36,30 @@ public class BidListService {
         BidList bidUpdated = null;
 
         if(bidListFind.isPresent()){
-            BidList ruleNameUpdate = bidListFind.get();
-            ruleNameUpdate.setAccount(newBid.getAccount());
-            ruleNameUpdate.setType(newBid.getType());
-            ruleNameUpdate.setBidQuantity(newBid.getBidQuantity());
-            ruleNameUpdate.setAskQuantity(newBid.getAskQuantity());
-            ruleNameUpdate.setBid(newBid.getBid());
-            ruleNameUpdate.setAsk(newBid.getAsk());
-            ruleNameUpdate.setBenchmark(newBid.getBenchmark());
-            ruleNameUpdate.setruleNameDate(newBid.getruleNameDate());
-            ruleNameUpdate.setCommentary(newBid.getCommentary());
-            ruleNameUpdate.setSecurity(newBid.getSecurity());
-            ruleNameUpdate.setStatus(newBid.getStatus());
-            ruleNameUpdate.setTrader(newBid.getTrader());
-            ruleNameUpdate.setBook(newBid.getBook());
-            ruleNameUpdate.setCreationName(newBid.getCreationName());
-            ruleNameUpdate.setCreationDate(newBid.getCreationDate());
-            ruleNameUpdate.setRevisionName(newBid.getRevisionName());
-            ruleNameUpdate.setRevisionDate(newBid.getRevisionDate());
-            ruleNameUpdate.setDealName(newBid.getDealName());
-            ruleNameUpdate.setDealType(newBid.getDealType());
-            ruleNameUpdate.setSourceListId(newBid.getSourceListId());
-            ruleNameUpdate.setSide(newBid.getSide());
+            BidList bidUpdate = bidListFind.get();
+            bidUpdate.setAccount(newBid.getAccount());
+            bidUpdate.setType(newBid.getType());
+            bidUpdate.setBidQuantity(newBid.getBidQuantity());
+            bidUpdate.setAskQuantity(newBid.getAskQuantity());
+            bidUpdate.setBid(newBid.getBid());
+            bidUpdate.setAsk(newBid.getAsk());
+            bidUpdate.setBenchmark(newBid.getBenchmark());
+            bidUpdate.setBidListDate(newBid.getBidListDate());
+            bidUpdate.setCommentary(newBid.getCommentary());
+            bidUpdate.setSecurity(newBid.getSecurity());
+            bidUpdate.setStatus(newBid.getStatus());
+            bidUpdate.setTrader(newBid.getTrader());
+            bidUpdate.setBook(newBid.getBook());
+            bidUpdate.setCreationName(newBid.getCreationName());
+            bidUpdate.setCreationDate(newBid.getCreationDate());
+            bidUpdate.setRevisionName(newBid.getRevisionName());
+            bidUpdate.setRevisionDate(newBid.getRevisionDate());
+            bidUpdate.setDealName(newBid.getDealName());
+            bidUpdate.setDealType(newBid.getDealType());
+            bidUpdate.setSourceListId(newBid.getSourceListId());
+            bidUpdate.setSide(newBid.getSide());
 
-            bidUpdated = bidListRepository.save(ruleNameUpdate);
+            bidUpdated = bidListRepository.save(bidUpdate);
         }
 
         return bidUpdated;

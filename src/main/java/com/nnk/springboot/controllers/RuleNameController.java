@@ -52,7 +52,7 @@ public class RuleNameController {
     public String updateRuleName(@PathVariable("id") Integer id, @Valid RuleName ruleName,
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "curvePoint/update";
+            return "ruleName/update";
         }
 
         ruleNameService.update(ruleName,id);

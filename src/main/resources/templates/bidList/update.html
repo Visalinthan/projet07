@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="row">
-		<form action="#" th:action="@{/bidList/update/{id}(id=${ruleName.id})}" th:object="${bidList}" method="post" class="form-horizontal" style="width: 100%">
+		<form action="#" th:action="@{/bidList/update/{id}(id=${bidList.id})}" th:object="${bidList}" method="post" class="form-horizontal" style="width: 100%">
 				<div class="form-group">
 					<label for="account" class="col-sm-2 control-label">Account</label>
 					<div class="col-sm-10">
@@ -69,7 +69,7 @@
 					<label for="bidListDate" class="col-sm-2 control-label">bidListDate</label>
 					<div class="col-sm-10">
 						<input type="text" th:field="*{bidListDate}" id="bidListDate" placeholder="bidListDate" class="col-4">
-						<p class="text-danger" th:if="${#fields.hasErrors('ruleNameDate')}" th:errors="*{bidListDate}"></p>
+						<p class="text-danger" th:if="${#fields.hasErrors('bidListDate')}" th:errors="*{bidListDate}"></p>
 					</div>
 				</div>
 

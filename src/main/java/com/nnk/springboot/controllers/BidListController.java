@@ -52,7 +52,7 @@ public class BidListController {
     public String showUpdateBidForm(@PathVariable("id") Integer id, Model model) {
         BidList bidList = bidListService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid bidList Id:" + id));
         model.addAttribute("bidList", bidList);
-        return "ruleName/update";
+        return "bidList/update";
     }
 
     @PostMapping("/bidList/update/{id}")
