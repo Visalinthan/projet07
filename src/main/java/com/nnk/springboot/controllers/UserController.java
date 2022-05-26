@@ -4,15 +4,13 @@ import com.nnk.springboot.domain.ERole;
 import com.nnk.springboot.domain.Role;
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.payload.request.SignupRequest;
+import com.nnk.springboot.payload.request.UpdateRequest;
 import com.nnk.springboot.security.authentication.AuthenticationFacadeImpl;
 import com.nnk.springboot.security.service.RoleService;
-import com.nnk.springboot.security.service.UserDetailsImpl;
 import com.nnk.springboot.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -74,9 +72,7 @@ public class UserController {
                 return "/login";
             }
         }
-
         return "/user/add";
-
     }
 
     @GetMapping("/user/update/{id}")
@@ -88,20 +84,15 @@ public class UserController {
     }
 
     @PostMapping("/user/update/{id}")
-    public String updateUser(@PathVariable("id") Long id, @Valid User user,
+    public String updateUser(@PathVariable("id") Long id, UpdateRequest user,
                              BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "user/update";
         }
-
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        user.setPassword(encoder.encode(user.getPassword()));
-        user.setId(id);
-        userService.save(user);
+        userService.update(id,user);
         model.addAttribute("users", userService.list());
         return "redirect:/user/list";
     }
-
     @GetMapping("/user/delete/{id}")
     public String deleteUser(@PathVariable("id") Long id, Model model) {
         User user = userService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));

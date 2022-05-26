@@ -1,9 +1,9 @@
 package com.nnk.springboot.security.service;
 
 import com.nnk.springboot.domain.User;
+import com.nnk.springboot.payload.request.UpdateRequest;
 import com.nnk.springboot.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -14,7 +14,6 @@ import java.util.Optional;
 @Transactional
 public class UserService {
     private UserRepository userRepository;
-
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -28,17 +27,16 @@ public class UserService {
         return this.userRepository.save(user);
     }
 
-    public User update(User newUser){
-        Optional<User> userFind = this.userRepository.findById(newUser.getId());
+    public User update(Long id, UpdateRequest newUser){
+        Optional<User> userFind = this.userRepository.findById(id);
 
         User userUpdated = null;
 
         if(userFind.isPresent()){
             User userUpdate = userFind.get();
             userUpdate.setFullname(newUser.getFullname());
+            userUpdate.setUsername(newUser.getUsername());
             userUpdate.setEmail(newUser.getEmail());
-            userUpdate.setPassword(newUser.getPassword());
-            userUpdate.setRoles(newUser.getRoles());
 
             userUpdated = this.userRepository.save(userUpdate);
         }

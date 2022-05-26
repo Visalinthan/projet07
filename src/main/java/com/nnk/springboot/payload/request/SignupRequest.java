@@ -11,16 +11,16 @@ public class SignupRequest {
     @NotBlank(message = "Fullname is mandatory")
     private String fullname;
 
-    @NotBlank(message = "Fullname is mandatory")
+    @NotBlank(message = "username is mandatory")
     private String username;
 
-    @NotBlank(message = "Fullname is mandatory")
+    @NotBlank(message = "email is mandatory")
     @Email
     private String email;
 
     private Set<String> role;
 
-    //@ValidPassword
+    @ValidPassword
     private String password;
 
     public String getFullname() {
