@@ -35,6 +35,11 @@ public class UserController {
     @Autowired
     private AuthenticationFacadeImpl authenticationFacade;
 
+    /**
+     * Récupère la liste des utilisateur avec la méthode list dans la class userService
+     * Affiche la page contenant la liste des utilisateurs
+     * @return une liste d'utilisateur
+     */
     @RequestMapping("/user/list")
     public String homeUser(Model model)
     {
@@ -42,16 +47,30 @@ public class UserController {
         return "user/list";
     }
 
+    /**
+     * DTO pour enregistrer un utilisateur
+     * @return SignupRequest
+     */
     @ModelAttribute("user")
     public SignupRequest signupRequest() {
         return new SignupRequest();
     }
 
+    /**
+     * Récupère la liste des utilisateur avec la méthode list dans la class userService
+     * @return une liste d'utilisateur
+     */
     @RequestMapping(method = RequestMethod.GET, value = "/user/add")
     public String addUser() {
         return "user/add";
     }
 
+    /**
+     * Enregitsre un utilisateur avec la méthode save dans la class userService si validation est correcte
+     * @param signUpRequest
+     * @param result
+     * @return une page
+     */
     @PostMapping("/user/add")
     public String validateUser(@Valid @ModelAttribute("user") SignupRequest signUpRequest, BindingResult result) {
         Authentication authentication = authenticationFacade.getAuthentication();
@@ -75,6 +94,12 @@ public class UserController {
         return "/user/add";
     }
 
+    /**
+     * Affiche la page contenant l' utilisateur à modifier
+     * @param id
+     * @param model
+     * @return page user/update
+     */
     @GetMapping("/user/update/{id}")
     public String showUpdateFormUser(@PathVariable("id") Long id, Model model) {
         User user = userService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
@@ -83,6 +108,14 @@ public class UserController {
         return "user/update";
     }
 
+    /**
+     * Modifie un utilisateur avec la méthode update dans la class userService si validation est correcte
+     * @param id
+     * @param user
+     * @param result
+     * @param model
+     * @return une page
+     */
     @PostMapping("/user/update/{id}")
     public String updateUser(@PathVariable("id") Long id, UpdateRequest user,
                              BindingResult result, Model model) {
@@ -93,6 +126,13 @@ public class UserController {
         model.addAttribute("users", userService.list());
         return "redirect:/user/list";
     }
+
+    /**
+     * Supprime un utilisateur avec la méthode deleteById dans la class userService
+     * @param id
+     * @param model
+     * @return page user/list
+     */
     @GetMapping("/user/delete/{id}")
     public String deleteUser(@PathVariable("id") Long id, Model model) {
         User user = userService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));

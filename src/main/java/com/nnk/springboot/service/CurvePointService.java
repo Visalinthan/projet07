@@ -18,16 +18,36 @@ public class CurvePointService {
         this.curvePointRepository = curvePointRepository;
     }
 
+    /**
+     * Recherche une liste de point de courbe avec la méthode findAll de l'interface curvePointRepository
+     * @return une liste curvePoint
+     */
     public List<CurvePoint> list(){
         return this.curvePointRepository.findAll();
     }
 
+    /**
+     * Recherche un point de courbe en fonction de l'id dans le paramètre avec la méthode findAll de curvePointRepository
+     * @param id
+     * @return curvePoint
+     */
     public Optional<CurvePoint> findById(Integer id){return this.curvePointRepository.findById(id);}
 
+    /**
+     * Sauvergarde d'un point de courbe avec la méthode save de curvePointRepository
+     * @param curvePoint
+     * @return une sauvergade curvePoint
+     */
     public CurvePoint save(CurvePoint curvePoint){
         return this.curvePointRepository.save(curvePoint);
     }
 
+    /**
+     * Modification d'un point de courbe en récupérant les éléménts dans les paramètres avec la méthode save de curvePointRepository
+     * @param newCurvePoint
+     * @param id
+     * @return un curvePoint modifié
+     */
     public CurvePoint update(CurvePoint newCurvePoint, int id){
         Optional<CurvePoint> curvePointFind = this.curvePointRepository.findById(id);
         CurvePoint curvePointUpdated = null;
@@ -46,6 +66,10 @@ public class CurvePointService {
         return curvePointUpdated;
     }
 
+    /**
+     * Suppression d'un point de courbe en récupérant l'id dans le paramètre avec la méthode deleteById de curvePointRepository
+     * @param id
+     */
     public void deleteById(Integer id){
         this.curvePointRepository.deleteById(id);
     }

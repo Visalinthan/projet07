@@ -22,6 +22,11 @@ public class CurveController {
     @Autowired
     CurvePointService curvePointService;
 
+    /**
+     * Affiche la page contenant tout les points de courbes
+     * @param model
+     * @return page curvePoint/list
+     */
     @RequestMapping("/curvePoint/list")
     public String homeCurve(Model model)
     {
@@ -29,11 +34,23 @@ public class CurveController {
         return "curvePoint/list";
     }
 
+    /**
+     * Affiche la page pour ajouter un point de courbe
+     * @param bid
+     * @return page curvePoint/add
+     */
     @GetMapping("/curvePoint/add")
     public String addCurveForm(CurvePoint bid) {
         return "curvePoint/add";
     }
 
+    /**
+     * Enregistre un point de courbe avec la méthode save dans la class curvePointService si validation est correcte
+     * @param curvePoint
+     * @param result
+     * @param model
+     * @return page
+     */
     @PostMapping("/curvePoint/validate")
     public String validateCurve(@Valid CurvePoint curvePoint, BindingResult result, Model model) {
         if (!result.hasErrors()) {
@@ -44,6 +61,12 @@ public class CurveController {
         return "curvePoint/add";
     }
 
+    /**
+     * Affiche la page contenant le point de courbe à modifier
+     * @param id
+     * @param model
+     * @return curvePoint/update
+     */
     @GetMapping("/curvePoint/update/{id}")
     public String showUpdateFormCurve(@PathVariable("id") Integer id, Model model) {
         CurvePoint curvePoint = curvePointService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid curvePoint Id:" + id));
@@ -51,6 +74,14 @@ public class CurveController {
         return "curvePoint/update";
     }
 
+    /**
+     * Modifie un point de courbe avec la méthode update dans la class curvePointService si validation est correcte
+     * @param id
+     * @param curvePoint
+     * @param result
+     * @param model
+     * @return une page
+     */
     @PostMapping("/curvePoint/update/{id}")
     public String updateCurve(@PathVariable("id") Integer id, @Valid CurvePoint curvePoint,
                              BindingResult result, Model model) {
@@ -62,6 +93,12 @@ public class CurveController {
         return "redirect:/curvePoint/list";
     }
 
+    /**
+     * Supprime un point de courbe avec la méthode deleteById dans la class curvePointService
+     * @param id
+     * @param model
+     * @return curvePoint/list
+     */
     @GetMapping("/curvePoint/delete/{id}")
     public String deleteCurve(@PathVariable("id") Integer id, Model model) {
         CurvePoint curvePoint = curvePointService.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid curvePoint Id:" + id));

@@ -34,6 +34,9 @@ public class RuleNameServiceTest {
 		return ruleName;
 	}
 
+	/**
+	 * Test de méthode findAll de l'interface ruleNameRepository et méthode list de la class ruleNameService
+	 */
 	@Test
 	public void list(){
 		List<RuleName> ruleNames = new ArrayList<>();
@@ -44,6 +47,9 @@ public class RuleNameServiceTest {
 		assertThat(ruleNameService.list().get(0).getId()).isEqualTo(getRuleName().getId());
 	}
 
+	/**
+	 * Test de méthode save de l'interface ruleNameRepository et méthode save de la class ruleNameService
+	 */
 	@Test
 	public void save() {
 
@@ -55,6 +61,9 @@ public class RuleNameServiceTest {
 
 	}
 
+	/**
+	 * Test de méthode save de l'interface ruleNameRepository et méthode update de la class ruleNameService
+	 */
 	@Test
 	public void update(){
 		RuleName ruleName = getRuleName();
@@ -66,6 +75,9 @@ public class RuleNameServiceTest {
 
 	}
 
+	/**
+	 * Test de méthode deleteById de l'interface ruleNameRepository et méthode deleteById de la class ruleNameService
+	 */
 	@Test
 	public void delete() {
 		RuleName ruleName = getRuleName();

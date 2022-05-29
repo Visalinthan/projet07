@@ -35,6 +35,9 @@ public class BidListServiceTest {
 		return bid;
 	}
 
+	/**
+	 * Test de méthode findAll de l'interface bidListRepository et méthode list de la class bidListService
+	 */
 	@Test
 	public void list(){
 		List<BidList> bidLists = new ArrayList<>();
@@ -45,6 +48,9 @@ public class BidListServiceTest {
 		assertThat(bidListService.list().get(0).getId()).isEqualTo(getBidList().getId());
 	}
 
+	/**
+	 * Test de méthode save de l'interface bidListRepository et méthode save de la class bidListService
+	 */
 	@Test
 	public void save() {
 
@@ -56,6 +62,9 @@ public class BidListServiceTest {
 
 	}
 
+	/**
+	 * Test de méthode save de l'interface bidListRepository et méthode update de la class bidListService
+	 */
 	@Test
 	public void update(){
 		BidList bidList = getBidList();
@@ -67,6 +76,9 @@ public class BidListServiceTest {
 
 	}
 
+	/**
+	 * Test de méthode deleteById de l'interface bidListRepository et méthode deleteById de la class bidListService
+	 */
 	@Test
 	public void delete() {
 		BidList bidList = getBidList();

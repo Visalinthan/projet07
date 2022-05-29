@@ -18,16 +18,36 @@ public class TradeService {
         this.tradeRepository = tradeRepository;
     }
 
+    /**
+     * Recherche une liste d'échange avec la méthode findAll de l'interface tradeRepository
+     * @return une liste trade
+     */
     public List<Trade> list(){
         return this.tradeRepository.findAll();
     }
 
+    /**
+     * Recherche une trade en fonction de l'id dans le paramètre avec la méthode findAll de tradeRepository
+     * @param id
+     * @return trade
+     */
     public Optional<Trade> findById(Integer id){return this.tradeRepository.findById(id);}
 
-    public Trade save(Trade rating){
-        return this.tradeRepository.save(rating);
+    /**
+     * Sauvergarde d'une trade avec la méthode save de tradeRepository
+     * @param trade
+     * @return une sauvergade trade
+     */
+    public Trade save(Trade trade){
+        return this.tradeRepository.save(trade);
     }
 
+    /**
+     * Modification d'une échange en récupérant les éléménts dans les paramètres avec la méthode save de tradeRepository
+     * @param newTrade
+     * @param id
+     * @return une trade modifié
+     */
     public Trade update(Trade newTrade, int id){
         Optional<Trade> tradeFind = this.tradeRepository.findById(newTrade.getId());
         Trade ratingUpdated = null;
@@ -62,6 +82,11 @@ public class TradeService {
         return ratingUpdated;
     }
 
+
+    /**
+     * Suppression d'une échange en récupérant l'id dans le paramètre avec la méthode deleteById de tradeRepository
+     * @param id
+     */
     public void deleteById(Integer id){
         this.tradeRepository.deleteById(id);
     }

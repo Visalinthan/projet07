@@ -34,6 +34,9 @@ public class TradeServiceTest {
 		return trade;
 	}
 
+	/**
+	 * Test de méthode findAll de l'interface tradeRepository et méthode list de la class tradeService
+	 */
 	@Test
 	public void list(){
 		List<Trade> trades = new ArrayList<>();
@@ -44,6 +47,9 @@ public class TradeServiceTest {
 		assertThat(tradeService.list().get(0).getId()).isEqualTo(getTrade().getId());
 	}
 
+	/**
+	 * Test de méthode save de l'interface tradeRepository et méthode save de la class tradeService
+	 */
 	@Test
 	public void save() {
 
@@ -55,6 +61,9 @@ public class TradeServiceTest {
 
 	}
 
+	/**
+	 * Test de méthode update de l'interface tradeRepository et méthode save de la class tradeService
+	 */
 	@Test
 	public void update(){
 		Trade trade = getTrade();
@@ -66,6 +75,9 @@ public class TradeServiceTest {
 
 	}
 
+	/**
+	 * Test de méthode deleteById de l'interface tradeRepository et méthode deleteById de la class tradeService
+	 */
 	@Test
 	public void delete() {
 		Trade trade = getTrade();

@@ -19,6 +19,11 @@ public class RoleService {
     }
 
 
+    /**
+     * Vérifie si le role dans le paramètre existe
+     * @param strRoles
+     * @return roles
+     */
     public Set<Role> checkRoles(Set<String> strRoles){
         Set<Role> roles = new HashSet<>();
         if (strRoles == null) {

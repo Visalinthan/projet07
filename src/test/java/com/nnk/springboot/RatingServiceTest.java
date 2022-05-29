@@ -34,6 +34,9 @@ public class RatingServiceTest {
 		return rating;
 	}
 
+	/**
+	 * Test de méthode findAll de l'interface ratingRepository et méthode list de la class ratingService
+	 */
 	@Test
 	public void list(){
 		List<Rating> ratings = new ArrayList<>();
@@ -44,6 +47,9 @@ public class RatingServiceTest {
 		assertThat(ratingService.list().get(0).getId()).isEqualTo(getRating().getId());
 	}
 
+	/**
+	 * Test de méthode save de l'interface ratingRepository et méthode save de la class ratingService
+	 */
 	@Test
 	public void save() {
 
@@ -55,6 +61,9 @@ public class RatingServiceTest {
 
 	}
 
+	/**
+	 * Test de méthode save de l'interface ratingRepository et méthode update de la class ratingService
+	 */
 	@Test
 	public void update(){
 		Rating rating = getRating();
@@ -66,6 +75,9 @@ public class RatingServiceTest {
 
 	}
 
+	/**
+	 * Test de méthode deleteById de l'interface ratingRepository et méthode deleteById de la class ratingService
+	 */
 	@Test
 	public void delete() {
 		Rating rating = getRating();

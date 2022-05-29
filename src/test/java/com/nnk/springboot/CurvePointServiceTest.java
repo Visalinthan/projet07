@@ -36,6 +36,9 @@ public class CurvePointServiceTest {
 		return curvePoint;
 	}
 
+	/**
+	 * Test de méthode findAll de l'interface curvePointRepository et méthode list de la class curvePointService
+	 */
 	@Test
 	public void list(){
 		List<CurvePoint> curvePoints = new ArrayList<>();
@@ -46,6 +49,9 @@ public class CurvePointServiceTest {
 		assertThat(curvePointService.list().get(0).getId()).isEqualTo(getCurvePoint().getId());
 	}
 
+	/**
+	 * Test de méthode save de l'interface curvePointRepository et méthode save de la class curvePointService
+	 */
 	@Test
 	public void save() {
 
@@ -57,6 +63,9 @@ public class CurvePointServiceTest {
 
 	}
 
+	/**
+	 * Test de méthode save de l'interface curvePointRepository et méthode update de la class curvePointService
+	 */
 	@Test
 	public void update(){
 		CurvePoint curvePoint = getCurvePoint();
@@ -68,6 +77,9 @@ public class CurvePointServiceTest {
 
 	}
 
+	/**
+	 * Test de méthode deleteById de l'interface curvePointRepository et méthode deleteById de la class curvePointService
+	 */
 	@Test
 	public void delete() {
 		CurvePoint curvePoint = getCurvePoint();

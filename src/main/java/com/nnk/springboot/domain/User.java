@@ -3,8 +3,7 @@ package com.nnk.springboot.domain;
 import com.nnk.springboot.security.validator.ValidPassword;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,9 +24,9 @@ public class User {
     @NotBlank(message = "Email is mandatory")
     private String email;
 
-
+    @Size(min = 8, message = "Password should not be less than 8")
+    @ValidPassword
     private String password;
-
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "user_roles",

@@ -17,19 +17,38 @@ public class BidListService {
 
     private BidListRepository bidListRepository;
 
-
     public BidListService(BidListRepository bidListRepository){
         this.bidListRepository = bidListRepository;
     }
 
+    /**
+     * Recherche une liste d'offre avec la méthode findAll de l'interface bidListRepository
+     * @return une liste bidList
+     */
     public List<BidList> list(){return this.bidListRepository.findAll();}
 
+    /**
+     * Recherche une offre en fonction de l'id dans le paramètre avec la méthode findAll de bidListRepository
+     * @param id
+     * @return bidList
+     */
     public Optional<BidList> findById(Integer id){return this.bidListRepository.findById(id);}
 
+    /**
+     * Sauvergarde d'une offre avec la méthode save de bidListRepository
+     * @param bidList
+     * @return une sauvergade bidList
+     */
     public BidList save(BidList bidList){
         return this.bidListRepository.save(bidList);
     }
 
+    /**
+     * Modification d'une offre en récupérant les éléménts dans les paramètre avec la méthode save de bidListRepository
+     * @param newBid
+     * @param id
+     * @return une offre modifié
+     */
     public BidList update(BidList newBid, int id){
         Optional<BidList> bidListFind = this.bidListRepository.findById(id);
 
@@ -65,6 +84,10 @@ public class BidListService {
         return bidUpdated;
     }
 
+    /**
+     * Suppression d'une offre en récupérant l'id dans le paramètre avec la méthode deleteById de bidListRepository
+     * @param id
+     */
     public void deleteById(Integer id){
          this.bidListRepository.deleteById(id);
     }

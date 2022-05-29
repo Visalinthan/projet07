@@ -3,6 +3,7 @@ package com.nnk.springboot.payload.request;
 import com.nnk.springboot.security.validator.ValidPassword;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Set;
@@ -20,6 +21,7 @@ public class SignupRequest {
 
     private Set<String> role;
 
+    @Size(min = 8, message = "Password should not be less than 8")
     @ValidPassword
     private String password;
 

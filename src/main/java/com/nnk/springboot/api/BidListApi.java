@@ -34,6 +34,9 @@ public class BidListApi {
     @PostMapping("/bidList")
     public ResponseEntity<MessageResponse> createBid(@Valid @RequestBody BidList bid) {
         bidListService.save(bid);
+
+        Logger.info("La bidList a été ajouté !");
+
         return ResponseEntity.ok(new MessageResponse("Bid saved !"));
     }
 
